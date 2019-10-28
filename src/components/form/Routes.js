@@ -2,21 +2,34 @@ import React, { useState } from 'react';
 import CustomTable from './Table';
 import MyForm from './Myform';
 import moment from 'moment';
-import { connect } from 'react-redux';
-import { addInfo } from '../../actions/users';
-const Routes = ({ addInfo }) => {
+import { useDispatch } from 'react-redux';
+import { ADD_DATA } from '../../actions/types';
+// import { addInfo } from '../../actions/users';
+
+const Routes = () => {
+  const dispatch = useDispatch();
   const [count, setCount] = useState(0);
   const handleChange = values => {
     setCount(count + 1);
-
-    addInfo({
-      key: count,
-      firstName: values.firstname,
-      lastName: values.lastname,
-      birthday: moment(values.birthday).format('l'),
-      age: values.age,
-      hobby: values.hobby
+    dispatch({
+      type: ADD_DATA,
+      payload: {
+        key: count,
+        firstName: values.firstname,
+        lastName: values.lastname,
+        birthday: moment(values.birthday).format('l'),
+        age: values.age,
+        hobby: values.hobby
+      }
     });
+    // addInfo({
+    //   key: count,
+    //   firstName: values.firstname,
+    //   lastName: values.lastname,
+    //   birthday: moment(values.birthday).format('l'),
+    //   age: values.age,
+    //   hobby: values.hobby
+    // });
   };
 
   return (
@@ -27,7 +40,8 @@ const Routes = ({ addInfo }) => {
   );
 };
 
-export default connect(
-  null,
-  { addInfo }
-)(Routes);
+export default Routes;
+// connect(
+//   null,
+//   { addInfo }
+// )(Routes);

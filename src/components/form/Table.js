@@ -1,8 +1,10 @@
 import React from 'react';
 import { Table } from 'antd';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const CustomTable = props => {
+const CustomTable = () => {
+  const users = useSelector(state => state.users.dataSource);
+
   const columns = [
     {
       title: 'First Name',
@@ -32,12 +34,7 @@ const CustomTable = props => {
     }
   ];
 
-  return <Table columns={columns} dataSource={props.users} />;
+  return <Table columns={columns} dataSource={users} />;
 };
-const mapStateToProps = state => ({
-  users: state.users.dataSource
-});
-export default connect(
-  mapStateToProps,
-  {}
-)(CustomTable);
+
+export default CustomTable;
