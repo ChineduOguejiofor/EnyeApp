@@ -4,7 +4,6 @@ import MyForm from './Myform';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { ADD_DATA } from '../../actions/types';
-// import { addInfo } from '../../actions/users';
 
 const Routes = () => {
   const dispatch = useDispatch();
@@ -22,14 +21,6 @@ const Routes = () => {
         hobby: values.hobby
       }
     });
-    // addInfo({
-    //   key: count,
-    //   firstName: values.firstname,
-    //   lastName: values.lastname,
-    //   birthday: moment(values.birthday).format('l'),
-    //   age: values.age,
-    //   hobby: values.hobby
-    // });
   };
 
   return (
@@ -41,7 +32,3 @@ const Routes = () => {
 };
 
 export default Routes;
-// connect(
-//   null,
-//   { addInfo }
-// )(Routes);
