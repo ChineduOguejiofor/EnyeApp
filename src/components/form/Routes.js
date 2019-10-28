@@ -30,7 +30,6 @@ export default class Routes extends Component {
         }
       ])
     });
-    // console.log(this.state.dataSource);
   }
 
   render() {
