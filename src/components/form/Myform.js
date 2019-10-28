@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Form, Input, DatePicker, Button } from 'antd';
 const { TextArea } = Input;
+
 class NormalLoginForm extends React.Component {
   render() {
     const handleSubmit = e => {

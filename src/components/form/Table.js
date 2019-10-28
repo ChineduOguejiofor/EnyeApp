@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
+import { connect } from 'react-redux';
 
 const CustomTable = props => {
   const columns = [
@@ -31,7 +32,12 @@ const CustomTable = props => {
     }
   ];
 
-  return <Table columns={columns} dataSource={props.dataSource} />;
+  return <Table columns={columns} dataSource={props.users} />;
 };
-
-export default CustomTable;
+const mapStateToProps = state => ({
+  users: state.users.dataSource
+});
+export default connect(
+  mapStateToProps,
+  {}
+)(CustomTable);
