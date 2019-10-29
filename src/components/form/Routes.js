@@ -3,7 +3,6 @@ import CustomTable from './Table';
 import MyForm from './Myform';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { adduserToDb } from '../../actions/users';
 import { ADD_DATA } from '../../actions/types';
 
 const Routes = () => {
@@ -22,16 +21,6 @@ const Routes = () => {
       }
     });
     setCount(count + 1);
-    // dispatch(
-    // adduserToDb({
-    //   key: count,
-    //   firstName: values.firstname,
-    //   lastName: values.lastname,
-    //   birthday: moment(values.birthday).format('l'),
-    //   age: values.age,
-    //   hobby: values.hobby
-    // })
-    // );
   };
 
   return (

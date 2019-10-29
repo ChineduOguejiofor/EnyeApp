@@ -7,6 +7,11 @@ const CustomTable = () => {
 
   const columns = [
     {
+      title: 'UserId',
+      dataIndex: 'id',
+      key: 'id'
+    },
+    {
       title: 'First Name',
       dataIndex: 'firstName',
       key: 'firstName'
@@ -34,7 +39,7 @@ const CustomTable = () => {
     }
   ];
 
-  return <Table columns={columns} dataSource={users} />;
+  return <Table columns={columns} dataSource={users} rowKey='id' />;
 };
 
 export default CustomTable;

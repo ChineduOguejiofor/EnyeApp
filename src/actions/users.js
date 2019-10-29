@@ -1,4 +1,4 @@
-import { ADD_DATA, GET_DATA, FETCH_ERROR, USER_ADDED } from './types';
+import { ADD_DATA, USER_ADDED, FETCH_ERROR } from './types';
 import axios from 'axios';
 
 export const addUser = values => {
@@ -15,13 +15,6 @@ export const addToState = values => {
   };
 };
 
-export const setErrors = error => {
-  return {
-    type: FETCH_ERROR,
-    payload: error
-  };
-};
-
 export const adduserToDb = async values => {
   const config = { headers: { 'Content-Type': 'application/json' } };
   try {
@@ -31,25 +24,11 @@ export const adduserToDb = async values => {
       body,
       config
     );
-    console.log(res.data);
+    return res.data;
   } catch (error) {
-    console.log('Failed on Error ', error);
-  }
-};
-
-export const getUsersfromDB = () => async dispatch => {
-  console.log('Get users was called');
-
-  try {
-    const res = await axios.get(
-      'https://us-central1-enye-71334.cloudfunctions.net/entries'
-    );
-    console.log(res.data);
-    dispatch({
-      type: GET_DATA,
-      payload: res.data
-    });
-  } catch (error) {
-    console.log('Failed on Error ', error);
+    return {
+      type: FETCH_ERROR,
+      payload: error.toString()
+    };
   }
 };
