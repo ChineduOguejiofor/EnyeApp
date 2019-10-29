@@ -1,12 +1,20 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers';
+import createSagaMiddleware from 'redux-saga';
+import { watchAgeUp } from './sagas/saga';
 
-const initialState = {};
+const configureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
+  const store = createStore(
+    rootReducer,
+    compose(
+      applyMiddleware(sagaMiddleware),
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+  );
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-export default store;
+  sagaMiddleware.run(watchAgeUp);
+  return store;
+};
+export default configureStore;
