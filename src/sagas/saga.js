@@ -2,7 +2,6 @@ import { takeLatest, take, call, put, fork } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import { adduserToDb } from '../actions/users';
 import { ADD_DATA, USER_ADDED, FETCH_ERROR } from '../actions/types';
-// import firebase from 'firebase';
 import firebase from 'firebase/app';
 import 'firebase/database';
 firebase.initializeApp({
